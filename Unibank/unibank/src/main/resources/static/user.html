@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1" />
+    <title>Create Customer</title>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">UniBank</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="user.html">Register User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="account.html">Create Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="log.html">Send Money</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div  class="container d-flex flex-column justify-content-center align-items-center">
+
+    <div class="col-sm-4">
+
+
+        <form action="#" th:action="@{/user/saveUser}" th:object="${user}" method="POST">
+            <h4 class="h4 text-primary font-weight-light mt-5">Register User</h4>
+            <hr>
+            <div>
+                <tr>
+                    <label class="form-label" >Account Holder Name</label>
+                    <td>
+                        <input type="hidden" th:field="*{userId}" />
+                        <input type="text" th:field="*{accHolderName}" class="form-control" placeholder="Account Holder Name" />
+                    </td>
+                </tr>
+            </div>
+
+            <div alight="left">
+
+                <tr>
+                    <label class="form-label mt-3" >Account Holder ID</label>
+                    <td><input type="text" th:field="*{accHolderID}" class="form-control" placeholder="Account Holder ID" /></td>
+                </tr>
+            </div>
+            <div alight="left">
+                <tr>
+                    <label class="form-label  mt-3" >Account Holder Address</label>
+                    <td><input type="text" th:field="*{accHolderAddress}" class="form-control" placeholder="Account Holder Address" /></td>
+                </tr>
+            </div>
+            <div alight="left">
+                <tr>
+                    <label class="form-label  mt-3" >Account Holder Mobile</label>
+                    <td><input type="text" th:field="*{accHolderMobile}" class="form-control" placeholder="Account Holder Mobile" /></td>
+                </tr>
+            </div>
+            <br>
+            <tr>
+                <td colspan="2"><button type="submit" class="btn btn-primary px-5 mt-3">Save</button></td>
+            </tr>
+            </table>
+        </form>
+    </div>
+    <br/><br/><br/>
+    <div  class="container d-flex flex-column justify-content-center align-items-center">
+        <table class="table table-hover ">
+            <thead class="">
+            <tr>
+                <th>ID</th>
+                <th>Account Holder Name</th>
+                <th>Account Holder ID</th>
+                <th>Account Holder Address</th>
+                <th>Account Holder Mobile</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody >
+            <
+            <tr th:each="user: ${listusers}">
+                <td th:text="${user.}">ID</td>
+                <td th:text="${hotel.getcustomername()}">Account Holder Name</td>
+                <td th:text="${hotel.getroom()}">Account Holder ID</td>
+                <td th:text="${hotel.getFee()}">Account Holder Address</td>
+                <td th:text="${hotel.getFee()}">Account Holder Mobile</td>
+
+                <td><button class="btn btn-primary px-3 py-2 my-3 mr-5 bg-dark" >
+                    <a class="text-decoration-none text-white p-2" th:href="@{'/edit/' + ${hotel.id}}" >Edit</a>
+                </button></td>
+                <td><button class="btn btn-primary px-3 py-2 my-3 mr-5 bg-dark" >
+                    <a class="text-decoration-none text-white p-2" th:href="@{'/edit/' + ${hotel.id}}" >Delete</a>
+                </button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
